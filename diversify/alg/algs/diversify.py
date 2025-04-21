@@ -42,9 +42,9 @@ class Diversify(Algorithm):
         self.args = args
 
     def update_d(self, minibatch, opt):
-        all_x1 = minibatch[0].cuda().float()
-        all_d1 = minibatch[1].cuda().long()
-        all_c1 = minibatch[4].cuda().long()
+        all_x1 = minibatch[0].float()
+        all_d1 = minibatch[1].long()
+        all_c1 = minibatch[4].long()
         z1 = self.dbottleneck(self.featurizer(all_x1))
         disc_in1 = Adver_network.ReverseLayerF.apply(z1, self.args.alpha1)
         disc_out1 = self.ddiscriminator(disc_in1)
@@ -69,7 +69,7 @@ class Diversify(Algorithm):
             for _ in range(len(loader)):
                 data = next(iter_test)
                 inputs = data[0]
-                inputs = inputs.cuda().float()
+                inputs = inputs.float()
                 index = data[-1]
                 feas = self.dbottleneck(self.featurizer(inputs))
                 outputs = self.dclassifier(feas)
@@ -110,15 +110,15 @@ class Diversify(Algorithm):
         self.featurizer.train()
 
     def update(self, data, opt):
-        all_x = data[0].cuda().float()
-        all_y = data[1].cuda().long()
+        all_x = data[0].float()
+        all_y = data[1].long()
         all_z = self.bottleneck(self.featurizer(all_x))
 
         disc_input = all_z
         disc_input = Adver_network.ReverseLayerF.apply(
             disc_input, self.args.alpha)
         disc_out = self.discriminator(disc_input)
-        disc_labels = data[4].cuda().long()
+        disc_labels = data[4].long()
 
         disc_loss = F.cross_entropy(disc_out, disc_labels)
         all_preds = self.classifier(all_z)
@@ -130,9 +130,9 @@ class Diversify(Algorithm):
         return {'total': loss.item(), 'class': classifier_loss.item(), 'dis': disc_loss.item()}
 
     def update_a(self, minibatches, opt):
-        all_x = minibatches[0].cuda().float()
-        all_c = minibatches[1].cuda().long()
-        all_d = minibatches[4].cuda().long()
+        all_x = minibatches[0].float()
+        all_c = minibatches[1].long()
+        all_d = minibatches[4].long()
         all_y = all_d*self.args.num_classes+all_c
         all_z = self.abottleneck(self.featurizer(all_x))
         all_preds = self.aclassifier(all_z)

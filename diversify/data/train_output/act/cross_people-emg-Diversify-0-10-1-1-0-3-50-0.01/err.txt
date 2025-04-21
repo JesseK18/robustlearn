@@ -1,0 +1,60 @@
+Traceback (most recent call last):
+  File "/Users/jessekroll/Desktop/Bachelor Thesis 24/Repos for TSCAR models/robustlearn/diversify/train.py", line 99, in <module>
+    main(args)
+  File "/Users/jessekroll/Desktop/Bachelor Thesis 24/Repos for TSCAR models/robustlearn/diversify/train.py", line 28, in main
+    algorithm = algorithm_class(args).cuda()
+  File "/opt/anaconda3/envs/diversify/lib/python3.10/site-packages/torch/nn/modules/module.py", line 911, in cuda
+    return self._apply(lambda t: t.cuda(device))
+  File "/opt/anaconda3/envs/diversify/lib/python3.10/site-packages/torch/nn/modules/module.py", line 802, in _apply
+    module._apply(fn)
+  File "/opt/anaconda3/envs/diversify/lib/python3.10/site-packages/torch/nn/modules/module.py", line 802, in _apply
+    module._apply(fn)
+  File "/opt/anaconda3/envs/diversify/lib/python3.10/site-packages/torch/nn/modules/module.py", line 802, in _apply
+    module._apply(fn)
+  File "/opt/anaconda3/envs/diversify/lib/python3.10/site-packages/torch/nn/modules/module.py", line 825, in _apply
+    param_applied = fn(param)
+  File "/opt/anaconda3/envs/diversify/lib/python3.10/site-packages/torch/nn/modules/module.py", line 911, in <lambda>
+    return self._apply(lambda t: t.cuda(device))
+  File "/opt/anaconda3/envs/diversify/lib/python3.10/site-packages/torch/cuda/__init__.py", line 293, in _lazy_init
+    raise AssertionError("Torch not compiled with CUDA enabled")
+AssertionError: Torch not compiled with CUDA enabled
+Traceback (most recent call last):
+  File "/Users/jessekroll/Desktop/Bachelor Thesis 24/Repos for TSCAR models/robustlearn/diversify/train.py", line 99, in <module>
+    main(args)
+  File "/Users/jessekroll/Desktop/Bachelor Thesis 24/Repos for TSCAR models/robustlearn/diversify/train.py", line 42, in main
+    loss_result_dict = algorithm.update_a(data, opta)
+  File "/Users/jessekroll/Desktop/Bachelor Thesis 24/Repos for TSCAR models/robustlearn/diversify/alg/algs/diversify.py", line 133, in update_a
+    all_x = minibatches[0].cuda().float()
+  File "/opt/anaconda3/envs/diversify/lib/python3.10/site-packages/torch/cuda/__init__.py", line 293, in _lazy_init
+    raise AssertionError("Torch not compiled with CUDA enabled")
+AssertionError: Torch not compiled with CUDA enabled
+Traceback (most recent call last):
+  File "/Users/jessekroll/Desktop/Bachelor Thesis 24/Repos for TSCAR models/robustlearn/diversify/train.py", line 104, in <module>
+    main(args)
+  File "/Users/jessekroll/Desktop/Bachelor Thesis 24/Repos for TSCAR models/robustlearn/diversify/train.py", line 47, in main
+    loss_result_dict = algorithm.update_a(data, opta)
+  File "/Users/jessekroll/Desktop/Bachelor Thesis 24/Repos for TSCAR models/robustlearn/diversify/alg/algs/diversify.py", line 133, in update_a
+    all_x = minibatches[0].cuda().float()
+  File "/opt/anaconda3/envs/diversify/lib/python3.10/site-packages/torch/cuda/__init__.py", line 293, in _lazy_init
+    raise AssertionError("Torch not compiled with CUDA enabled")
+AssertionError: Torch not compiled with CUDA enabled
+Traceback (most recent call last):
+  File "/Users/jessekroll/Desktop/Bachelor Thesis 24/Repos for TSCAR models/robustlearn/diversify/train.py", line 104, in <module>
+    main(args)
+  File "/Users/jessekroll/Desktop/Bachelor Thesis 24/Repos for TSCAR models/robustlearn/diversify/train.py", line 47, in main
+    loss_result_dict = algorithm.update_a(data, opta)
+  File "/Users/jessekroll/Desktop/Bachelor Thesis 24/Repos for TSCAR models/robustlearn/diversify/alg/algs/diversify.py", line 133, in update_a
+    all_x = minibatches[0].cuda().float()
+  File "/opt/anaconda3/envs/diversify/lib/python3.10/site-packages/torch/cuda/__init__.py", line 293, in _lazy_init
+    raise AssertionError("Torch not compiled with CUDA enabled")
+AssertionError: Torch not compiled with CUDA enabled
+Traceback (most recent call last):
+  File "/Users/jessekroll/Desktop/Bachelor Thesis 24/Repos for TSCAR models/robustlearn/diversify/train.py", line 104, in <module>
+    main(args)
+  File "/Users/jessekroll/Desktop/Bachelor Thesis 24/Repos for TSCAR models/robustlearn/diversify/train.py", line 82, in main
+    results['train_acc'] = modelopera.accuracy(
+  File "/Users/jessekroll/Desktop/Bachelor Thesis 24/Repos for TSCAR models/robustlearn/diversify/alg/modelopera.py", line 21, in accuracy
+    x = data[0].cuda().float()
+  File "/opt/anaconda3/envs/diversify/lib/python3.10/site-packages/torch/cuda/__init__.py", line 293, in _lazy_init
+    raise AssertionError("Torch not compiled with CUDA enabled")
+AssertionError: Torch not compiled with CUDA enabled

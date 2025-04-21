@@ -1,0 +1,2 @@
+Trying to run with cpu instead of cuda. in train.py edit
+Trying 

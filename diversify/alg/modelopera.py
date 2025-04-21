@@ -18,8 +18,8 @@ def accuracy(network, loader, weights, usedpredict='p'):
     network.eval()
     with torch.no_grad():
         for data in loader:
-            x = data[0].cuda().float()
-            y = data[1].cuda().long()
+            x = data[0].float()
+            y = data[1].long()
             if usedpredict == 'p':
                 p = network.predict(x)
             else:
@@ -30,7 +30,7 @@ def accuracy(network, loader, weights, usedpredict='p'):
                 batch_weights = weights[weights_offset:
                                         weights_offset + len(x)]
                 weights_offset += len(x)
-            batch_weights = batch_weights.cuda()
+            # batch_weights stays on CPU
             if p.size(1) == 1:
                 correct += (p.gt(0).eq(y).float() *
                             batch_weights.view(-1, 1)).sum().item()

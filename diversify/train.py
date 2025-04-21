@@ -2,6 +2,7 @@
 # Licensed under the MIT License.
 
 import time
+import torch
 from alg.opt import *
 from alg import alg, modelopera
 from utils.util import set_random_seed, get_args, print_row, print_args, train_valid_target_eval_names, alg_loss_dict, print_environ
@@ -11,6 +12,10 @@ from datautil.getdataloader_single import get_act_dataloader
 def main(args):
     s = print_args(args, [])
     set_random_seed(args.seed)
+
+    # force CPU
+    device = torch.device('cpu')
+    print(f'Using device: {device}')
 
     print_environ()
     print(s)
@@ -25,7 +30,7 @@ def main(args):
     best_valid_acc, target_acc = 0, 0
 
     algorithm_class = alg.get_algorithm_class(args.algorithm)
-    algorithm = algorithm_class(args).cuda()
+    algorithm = algorithm_class(args).to(device)
     algorithm.train()
     optd = get_optimizer(algorithm, args, nettype='Diversify-adv')
     opt = get_optimizer(algorithm, args, nettype='Diversify-cls')
